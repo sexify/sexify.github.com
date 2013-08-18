@@ -10,14 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
     <style>
-        @font-face {
-            font-family: 'Conv_Dense-Regular';
-            src: url('fonts/Dense-Regular.eot');
-            src: local('â˜º'), url('fonts/Dense-Regular.woff') format('woff'), url('fonts/Dense-Regular.ttf') format('truetype'), url('fonts/Dense-Regular.svg') format('svg');
-            font-weight: normal;
-            font-style: normal;
+        html, body {
+            overflow: hidden;
         }
         body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
             margin: 0;
         }
         .sexify {
@@ -28,87 +29,77 @@
             left: 0;
             right: 0;
             bottom: 0;
-            text-align: center;
-            font-family: "Conv_Dense-Regular", sans-serif;
-            font-weight: 100;
-            color: #ccc;
-            text-transform: uppercase;
-            font-weight: 800;
-            font-size: 320px;
-            height: 320px;
-            line-height: 320px;
-            -webkit-transition: all 0.5s;
-            cursor: default;
+            height: 50%;
+            width: 50%;
+            z-index: 2;
+            opacity: 0.5;
         }
-        @media (max-width: 800px) {
-            .sexify {
-                font-size: 240px;
-                height: 240px;
-                line-height: 240px;
-            }
+        .sexify svg {
+            height: 100%;
+            width: 100%;
+            position: absolute;
         }
-        @media (max-width: 568px) {
-            .sexify {
-                font-size: 140px;
-                height: 140px;
-                line-height: 140px;
-            }
+        .sexify .mask-image {
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-height: 100%;
+            max-width: 100%;
+            box-shadow: 0 0 0 3000px #fff, inset 0 0 0 1px #fff;
         }
-        @media (max-width: 480px) {
-            .sexify {
-                font-size: 80px;
-                height: 80px;
-                line-height: 80px;
-            }
+        .background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
         }
-        body.background-clip .sexify {
-            color: transparent;
-            -webkit-background-clip: text;
-            background-size: 250% 200%;
-            background-position-x: 25%;
-        }
-        .sexify.background-0 {
-            background-image: -webkit-radial-gradient(rgb(96, 205, 219), rgb(199, 140, 154));
-        }
-        .sexify.background-1 {
-            background-image: -webkit-radial-gradient(rgb(129, 224, 216), rgb(177, 218, 146));
-        }
-        .sexify.background-2 {
-            background-image: -webkit-radial-gradient(rgb(111, 104, 145), rgb(187, 250, 222));
-        }
-        .sexify.background-3 {
-            background-image: -webkit-radial-gradient(rgb(230, 227, 208), rgb(202, 161, 117));
-        }
-        .sexify.background-4 {
-            background-image: -webkit-radial-gradient(rgb(230, 227, 208), rgb(202, 161, 117));
-        }
-        .sexify.background-5 {
-            background-image: -webkit-radial-gradient(rgb(161, 223, 203), rgb(53, 41, 63));
+        .fire {
+            position: absolute;
+            top: 50%;
+            left: -900px;
+            opacity: 0;
+            margin-top: -230px;
+            margin-left: -119px;
+            -webkit-filter: contrast(1.3);
+            -moz-filter: contrast(1.3);
+            -webkit-transform: scale(2);
+            -moz-transform: scale(2);
+            -o-transform: scale(2);
+            transform: scale(2);
+            -webkit-transition: opacity 10s;
+            -moz-transition: opacity 10s;
+            -ms-transition: opacity 10s;
+            -o-transition: opacity 10s;
+            transition: opacity 10s;
         }
     </style>
 </head>
 <body>
-    <div class="sexify">Sexify</div>
-    <script>
-        (function(){
-            var n = 0,
-                sexify = document.getElementsByClassName('sexify')[0],
-                nextBackground
-            ;
-            document.body.className = "loaded";
-            nextBackground = function() {
-                sexify.className = 'sexify background-' + n;
-                n = (n + 1) % 6;
-            };
-            if (window.chrome && document.createElement('div').style.backgroundClip !== undefined) {
-                document.body.className += " background-clip";
-                nextBackground();
-                setInterval(function(){
-                    nextBackground();
-                }, 3000);
-            }
-        })();
-    </script>
+    <h1 style="display: none">Sexify</h1>
+    <div class="background-container">
+        <img class="fire" src="images/blue-fire.gif" />
+    </div>
+    <div class="sexify">
+        <svg viewBox="0 0 574 252" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g fill-rule="evenodd">
+                <path d="M574,0 L574,252 L0,252 L0,0 L574,0 Z M489.409393,222.68 L489.409393,228.68 L495.409393,228.68 L510.385393,228.68 L516.385393,228.68 L516.385393,222.68 L516.385393,134.368602 L550.928606,30.168002 L553.543533,22.28 L545.233393,22.28 L530.257393,22.28 L525.918411,22.28 L524.559324,26.4006368 L502.897393,92.0777671 L481.235462,26.4006368 L479.876375,22.28 L475.537393,22.28 L460.561393,22.28 L452.251254,22.28 L454.86618,30.168002 L489.409393,134.368602 L489.409393,222.68 Z M394.496,229.28 L388.496,229.28 L373.52,229.28 L367.52,229.28 L367.52,223.28 L367.52,28.88 L367.52,22.88 L373.52,22.88 L435.728,22.88 L441.728,22.88 L441.728,28.88 L441.728,43.856 L441.728,49.856 L435.728,49.856 L394.496,49.856 L394.496,112.448 L423.344,112.448 L429.344,112.448 L429.344,118.448 L429.344,133.712 L429.344,139.712 L423.344,139.712 L394.496,139.712 L394.496,223.28 L394.496,229.28 Z M327.864,22.88 L342.84,22.88 L348.84,22.88 L348.84,28.88 L348.84,223.28 L348.84,229.28 L342.84,229.28 L327.864,229.28 L321.864,229.28 L321.864,223.28 L321.864,28.88 L321.864,22.88 L327.864,22.88 Z M230.688,22.88 L235.026982,22.88 L236.386069,27.0006368 L258.048,92.6777671 L279.709931,27.0006368 L281.069018,22.88 L285.408,22.88 L300.384,22.88 L308.692989,22.88 L306.079461,30.7672533 L274.449751,126.2212 L306.077787,221.387703 L308.700746,229.28 L300.384,229.28 L285.408,229.28 L281.069018,229.28 L279.709931,225.159363 L258.048,159.482233 L236.386069,225.159363 L235.026982,229.28 L230.688,229.28 L215.712,229.28 L207.395254,229.28 L210.018213,221.387703 L241.646249,126.2212 L210.016539,30.7672533 L207.403011,22.88 L215.712,22.88 L230.688,22.88 Z M191.872,229.28 L127.36,229.28 L121.36,229.28 L121.36,223.28 L121.36,28.88 L121.36,22.88 L127.36,22.88 L189.568,22.88 L195.568,22.88 L195.568,28.88 L195.568,43.856 L195.568,49.856 L189.568,49.856 L148.336,49.856 L148.336,112.448 L177.184,112.448 L183.184,112.448 L183.184,118.448 L183.184,133.712 L183.184,139.712 L177.184,139.712 L148.336,139.712 L148.336,202.304 L191.872,202.304 L197.872,202.304 L197.872,208.304 L197.872,223.28 L197.872,229.28 L191.872,229.28 Z M79.904,89.36 L79.904,63.44 C79.904,54.3697085 72.5102915,46.976 63.44,46.976 C54.3697085,46.976 46.976,54.3697085 46.976,63.44 L46.976,76.4 C46.976,79.0235231 47.6974054,81.608559 48.9194041,84.018612 C49.3545475,84.8768115 49.8184814,85.6423025 50.2728404,86.2943918 C50.5180489,86.6463114 50.6791076,86.8527478 50.7513565,86.9374302 L96.5511229,141.378681 C96.9487808,141.853305 97.5529249,142.64259 98.2939131,143.722202 C99.486484,145.459765 100.670308,147.434078 101.773823,149.623309 C104.956493,155.937316 106.88,162.793686 106.88,170 L106.88,188.72 C106.88,212.769708 87.4897085,232.16 63.44,232.16 C39.3902915,232.16 20,212.769708 20,188.72 L20,160.208 L20,154.860499 L25.3122554,154.247546 L40.2882554,152.519546 L46.976,151.747884 L46.976,158.48 L46.976,188.72 C46.976,197.790292 54.3697085,205.184 63.44,205.184 C72.5102915,205.184 79.904,197.790292 79.904,188.72 L79.904,170 C79.904,167.39235 79.1314964,164.688587 77.8157853,162.091789 C77.3407231,161.154166 76.832198,160.305732 76.3315201,159.572283 C76.1641636,159.32712 76.0135955,159.118336 75.8406435,158.88657 L30.0306723,104.433106 C29.6418233,103.966488 29.0533322,103.193042 28.3326359,102.136021 C27.1742392,100.437039 26.0247167,98.5058413 24.9534369,96.3632816 C21.8656829,90.1877737 20,83.4713152 20,76.4 L20,63.44 C20,39.3902915 39.3902915,20 63.44,20 C87.4897085,20 106.88,39.3902915 106.88,63.44 L106.88,87.632 L106.88,92.9795011 L101.567745,93.5924536 L86.5917446,95.3204536 L79.904,96.0921165 L79.904,89.36 Z M79.904,89.36" fill="#fff"></path>
+            </g>
+        </svg>
+        <img class="mask-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAEAQAAAcIAQMAAACPrDYDAAAABGdBTUEAALGPC/xhBQAAAANQTFRFAAAAp3o92gAAAAF0Uk5TAEDm2GYAAAOXSURBVHja7cExAQAAAMKg9U/taQmgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgBh7iAAGrNui0AAAAAElFTkSuQmCC" />
+    </div>
     <div style="-webkit-transform: translateZ(0);"></div>
+    <script>
+        var fire = document.getElementsByClassName('fire')[0];
+        document.body.style.cursor = 'none';
+        document.body.onmousemove = function(event) {
+            fire.style.left = event.pageX + 'px';
+            fire.style.opacity = '1';
+        }
+    </script>
 </body>
 </html>
